@@ -1,10 +1,18 @@
 import React from 'react';
-const Home = (props) => {
+const Home = ({history, junctions}) => {
     const onClick = () => {
-        props.history.push({pathname: '/lights', state: {message: "hello, im a passed message!"}});
+        history.push({pathname: '/lights', state: {message: "hello, im a passed message!"}});
     }
     return (
-        <button onClick={onClick}>Show Result</button>
+        <div>
+            <button onClick={onClick}>Show Result</button>
+            {junctions.map((jun, index)=>{
+                console.log(jun);
+                return (
+                    <div key={index}>{jun.name}</div>
+                )
+            })}
+        </div>
     );
 }
 

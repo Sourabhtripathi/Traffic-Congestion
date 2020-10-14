@@ -1,1 +1,1 @@
-export const serverUrl = "";
+export const serverUrl = "https://traffic-congestion.herokuapp.com";
