@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import Map from './Map';
 import TrafficLight from './TrafficLight';
 
@@ -8,7 +8,7 @@ const Result = (props) => {
     if(!props.location.state){
       props.history.push("/");
     }
-  },[])
+  },[]);
 
   return (
     <Grid >
