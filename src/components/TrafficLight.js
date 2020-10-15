@@ -31,7 +31,7 @@ const TrafficLight = (props) => {
           />
           <Statistic
             style={{
-              marginLeft: "50vw",
+              marginLeft: "45vw",
             }}
           >
             <Statistic.Value>100</Statistic.Value>
