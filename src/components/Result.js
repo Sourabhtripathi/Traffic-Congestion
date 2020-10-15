@@ -29,7 +29,7 @@ const Result = (props) => {
         </div>
       </Grid.Row>
       <Grid.Row style={{ height: "90vh" }}>
-        <Grid.Column mobile={16} tablet={6} computer={9}>
+        <Grid.Column mobile={16} tablet={6} computer={8}>
           <Map
             isMarkerShown
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
