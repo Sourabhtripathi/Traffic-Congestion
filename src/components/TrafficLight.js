@@ -30,27 +30,31 @@ const TrafficLight = ({state}) => {
   },[]);
 
   const controlTimer = (g, ti) => {
-    setGreen(g);
-    setTimer(ti);
-    let count = 0;
-    let interval = setInterval(() => {
-      count++;
-      updateTimers(ti, count);
-      console.log("here");
-    }, 1000);
-   
-
+    let t;
     getTimers(g)
     .then(res=>{
-      let t = setTimers(res, g, ti);
-      setTimeout(()=>{
-        clearInterval(interval);
-        controlTimer((g+1)%4, t);
-      },ti[g]*1000);
+      t = setTimers(res, g, ti);
     })
     .catch(err=>{
       console.log(err);
     })
+    setGreen(g);
+    setTimer(ti);
+    let count = ti[g];
+    let i=1;
+    let interval = setInterval(()=>{
+      let time = [...ti];
+      for(let j=0 ; j<4 ; j++){
+        time[j] = ti[j] - i;
+      }
+      i++;
+      setTimer(time);
+      if(i>count){
+        controlTimer((g+1)%4, t);
+        clearInterval(interval)
+      }
+    },1000);
+    
   }
 
   const setTimers = (res, gr, ti) => {
@@ -70,12 +74,6 @@ const TrafficLight = ({state}) => {
   }
 
   const getTimers = (i) => {
-
-    // return new Promise((res, rej)=>{
-    //   res({
-    //     data : dummyData[i+1]
-    //   })
-    // });
     return api.get("/get-timer", {
       params : {
         _id : state._id,
@@ -83,14 +81,7 @@ const TrafficLight = ({state}) => {
       }
     });
   }
-  const updateTimers = (ti, count) => {
-    let i;
-    let time = [...ti];
-    for(i=0 ; i<4 ; i++){
-      if(time[i] > 0) time[i] = ti[i] - count;
-    }
-    setTimer(time);
-  }
+
 
   if(loading) return <div>Loading...</div>
   return (
