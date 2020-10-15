@@ -5,6 +5,7 @@
 }
 
 .button-div {
-  margin-left: 45vw;
   margin-top: 5vh;
+  padding-left: 28%;
+  border: 1px solid black;
 }
