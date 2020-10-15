@@ -19,7 +19,7 @@ const Result = (props) => {
       <Grid.Row style={{ height: "10vh" }}>
         <div
           style={{
-            marginLeft: "50vw",
+            margin: "0 auto",
             paddingTop: "2vh",
           }}
         >

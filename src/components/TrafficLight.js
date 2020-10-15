@@ -22,7 +22,6 @@ const TrafficLight = ({state}) => {
     .then(res=>{
       setLoading(false);
       let t = setTimers(res, -1, timer);
-      
       controlTimer((green+1)%4, t);
     })
     .catch(err=>{
@@ -33,7 +32,6 @@ const TrafficLight = ({state}) => {
   const controlTimer = (g, ti) => {
     setGreen(g);
     setTimer(ti);
-    // updateTimers(ti);
     let count = 0;
     let interval = setInterval(() => {
       count++;
@@ -58,14 +56,14 @@ const TrafficLight = ({state}) => {
   const setTimers = (res, gr, ti) => {
     let g = (gr+1)%4;
     let timers = [...ti];
-    timers[g] = res.data[g];
+    timers[g] = res.data.signal_time[g];
     
     let index;
     for(index=0 ; index<3 ; index++){
       if(index === 0){
         timers[(g+1)%4] = timers[g%4];
       }else{
-        timers[(g+index+1)%4] = timers[(g+index)%4] + res.data[(g+index)%4];
+        timers[(g+index+1)%4] = timers[(g+index)%4] + res.data.signal_time[(g+index)%4];
       }
     }
     return timers;
@@ -73,15 +71,19 @@ const TrafficLight = ({state}) => {
 
   const getTimers = (i) => {
 
-    return new Promise((res, rej)=>{
-      res({
-        data : dummyData[i+1]
-      })
+    // return new Promise((res, rej)=>{
+    //   res({
+    //     data : dummyData[i+1]
+    //   })
+    // });
+    return api.get("/get-timer", {
+      params : {
+        _id : state._id,
+        index : i
+      }
     });
-    // return api.get(`/${state._id}`);
   }
   const updateTimers = (ti, count) => {
-    console.log(ti);
     let i;
     let time = [...ti];
     for(i=0 ; i<4 ; i++){
@@ -91,7 +93,6 @@ const TrafficLight = ({state}) => {
   }
 
   if(loading) return <div>Loading...</div>
-
   return (
     <div
       style={{

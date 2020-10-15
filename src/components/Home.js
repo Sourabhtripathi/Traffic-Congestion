@@ -68,8 +68,8 @@ const Home = ({history, junctions}) => {
             <div className="home-div">
                 <DropdownExampleSearchSelection></DropdownExampleSearchSelection>
             </div>
-            <div className="button-div">
-                <Button color="pink" onClick={onClick}>
+            <div className="button-div" style={{width : "100%"}}>
+                <Button color="pink" onClick={onClick} style={{margin : "0 auto"}}>
                     Show Congestion
                 </Button>
             </div>
