@@ -26,3 +26,36 @@ input.color3 {
   user-select: none;
   outline: none;
 }
+
+.light{
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+  margin-left : -14vw;
+}
+
+.statistic{
+  position: relative;
+  top: 8vh;
+  margin-right : 3vw !important;
+}
+.alphabet{
+  z-index : 999;
+  margin-left: 10px !important;
+}
+
+@media only screen and (max-width: 1044px) {
+  .statistic span{
+    font-size: 2.4vw !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .light{
+    margin-left: -40vw !important;
+  }
+  .statistic{
+    margin-right: 7vw !important;
+  } 
+  .statistic span{
+    font-size: 6vw !important;
+  }
+}

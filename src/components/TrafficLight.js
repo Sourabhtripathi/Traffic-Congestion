@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Statistic, Loader } from "semantic-ui-react";
+import { Statistic, Loader, Card, Container } from "semantic-ui-react";
 import api from "../api";
 import "./TrafficLight.css";
 
@@ -104,54 +104,52 @@ const TrafficLight = ({ state }) => {
     );
 
   return (
-    <div
+    <Container
       style={{
         display: "flex",
         flexDirection: "column",
         marginTop: "5vh",
+        marginBottom : "10px"
         // marginLeft: "-35vw",
       }}
     >
-      {new Array(4).fill("").map((_, index) => (
-        <div style={{ marginLeft: "20px" }}>
-          <Statistic
-            style={{
-              // marginLeft: "45vw",
-              position: "relative",
-              top: "15px",
-            }}
-            color="grey"
-          >
-            <Statistic.Value>{String.fromCharCode(index + 65)}</Statistic.Value>
-          </Statistic>
-          <div
-            key={index}
-            style={{
-              display: "inline",
-            }}
-          >
-            <input
-              type="radio"
-              name="traffic-light-color"
-              className={index === green ? "color3" : "color1"}
-              value={index === green ? "color3" : "color1"}
+      <Card style={{width : "100%"}}>
+        {new Array(4).fill("").map((_, index) => (
+          <Card style={{width : "95%", margin : "10px auto", marginBottom : 0}}>
+            <div
+              key={index}
               style={{
-                margin: "4vh 0vw",
+                display: "inline",
               }}
-            />
-            <Statistic
-              style={{
-                position: "relative",
-                top: "15px",
-              }}
-              color={index === green ? "green" : "red"}
             >
-              <Statistic.Value>{timer[index]}</Statistic.Value>
-            </Statistic>
-          </div>
-        </div>
-      ))}
-    </div>
+              <Statistic
+                className = "alphabet"
+                floated ='left'
+                size="small"
+              >
+                <Statistic.Value >{String.fromCharCode(65 + index)}</Statistic.Value>
+              </Statistic>
+              
+              <input
+                type="radio"
+                name="traffic-light-color"
+                className={index === green ? "color3 light" : "color1 light"}
+                value={index === green ? "color3" : "color1"}
+              />
+              <Statistic
+                floated ='right'
+                className="statistic"
+                color={index === green ? "green" : "red"}
+                size="small"
+              >
+                {/* <Statistic.Value>{timer[index]} sec</Statistic.Value> */}
+                <span style={{fontSize : 40, color : index === green ? "green" : "red" }}>{timer[index]} sec</span>
+              </Statistic>
+            </div>
+          </Card>
+        ))}
+      </Card>
+    </Container>
   );
 };
 
