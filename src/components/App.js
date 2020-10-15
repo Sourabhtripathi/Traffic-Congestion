@@ -16,6 +16,7 @@ const App = () => {
     })
     .catch(err=>{
       console.log(err);
+      setLoading(false);
     })
   },[]);
   if(loading) return <div>Loading...</div>;

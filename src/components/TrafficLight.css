@@ -1,0 +1,28 @@
+input {
+  appearance: none;
+  position: relative;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: 20px;
+  margin-left: -40px;
+  background-color: grey;
+  vertical-align: middle;
+  border-radius: 100%;
+}
+input.color1 {
+  background-color: #ff0000;
+  box-shadow: 0 0 0.5em #ff3333;
+}
+input.color2 {
+  background-color: #ffff00;
+  box-shadow: 0 0 0.5em #ffff33;
+}
+input.color3 {
+  background-color: #00ff00;
+  box-shadow: 0 0 0.5em #33ff33;
+}
+* {
+  user-select: none;
+  outline: none;
+}

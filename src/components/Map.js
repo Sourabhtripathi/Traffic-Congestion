@@ -3,11 +3,15 @@ import { withScriptjs, withGoogleMap,GoogleMap, Marker,TrafficLayer } from "reac
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: 23.231248, lng: 77.432639 }}
+    defaultZoom={16}
+    defaultCenter={{ lat: props.state.coordinate.lat, lng: props.state.coordinate.lon }}
     
   >
-    {props.isMarkerShown && <Marker position={{ lat: 23.231248, lng: 77.432639 }} />}
+    {props.isMarkerShown && <Marker position={{ lat: props.state.coordinate.lat, lng: props.state.coordinate.lon }} />}
+    {props.isMarkerShown && <Marker label="A" position={{ lat: props.state.roads[0].lat, lng: props.state.roads[0].lon }} />}
+    {props.isMarkerShown && <Marker label="B" position={{ lat: props.state.roads[1].lat, lng: props.state.roads[1].lon }} />}
+    {props.isMarkerShown && <Marker label="C" position={{ lat: props.state.roads[2].lat, lng: props.state.roads[2].lon }} />}
+    {props.isMarkerShown && <Marker label="D" position={{ lat: props.state.roads[3].lat, lng: props.state.roads[3].lon }} />}
     <TrafficLayer autoUpdate />
   </GoogleMap>
 ))
