@@ -50,7 +50,7 @@ const TrafficLight = ({state}) => {
           />
           <Statistic
             style={{
-              marginLeft: "50vw",
+              marginLeft: "45vw",
             }}
             color = {index===green ? 'green': 'red'}
           >

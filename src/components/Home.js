@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown, Button } from "semantic-ui-react";
 import "./Home.css";
-const data = [
+const dummyData = [
     {
         key : 1,
         value : {
@@ -43,7 +43,7 @@ const Home = ({history, junctions}) => {
             }
         });
         setOptions(optns);
-        // setOptions(data);
+        // setOptions(dummyData);
     },[]);
 
     const handleChange = (e, {value}) => {
