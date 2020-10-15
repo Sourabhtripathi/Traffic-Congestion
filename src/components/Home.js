@@ -43,7 +43,6 @@ const Home = ({history, junctions}) => {
             }
         });
         setOptions(optns);
-        // setOptions(dummyData);
     },[]);
 
     const handleChange = (e, {value}) => {
